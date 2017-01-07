@@ -1,0 +1,57 @@
+
+
+#2
+ - jawna konfiguracja w plikach XML
+ 	<beans>
+ 	<bean>
+ 	<constructor-arg>
+ 	<property>
+ - jawna konfiguracja za pomoc klas Java
+ 	@Configuration
+ 	@Bean
+ - niejawna konfiguracja z uzyciem wyszukiwania komponentów i automatycznych powiazan
+ 	@Component
+ 	@Configuration
+ 	@ComponentScan
+ 	@Autowired
+
+ 	<context:component-scan/>
+
+ - importowanie i łaczanie konfiguracji
+ 	@Import
+ 	@ImportResource
+
+ 	<import resource="xxx"/>
+ 	<bean class="CDConfig"/>
+
+ *	Wiazanie za pomoca plików XML
+	<beans>
+
+		* deklaracja beana
+		<bean id="komp1" class="CDPlayer.class"/>
+
+		* wstrzykiwanie przez konstruktor referencji
+		<constructor-arg ref="compactDisc"/>
+
+		* z uzyciem przestrzeni nazw 'c'
+		<bean id="komp1" class="CDPlayer.class" c:cd-ref="compactDisc/>
+												c:_title="Nazwa albumu"/>
+		* wstrzykiwanie literału
+		<constructor-arg value="xxx"/>
+
+		*wstrzykiwanie kolekcji
+		<constructor-arg>
+			<list>
+				<value>...</value> 	<- lista typów prostych
+				<ref bean="xxx"/>	<- lista obiektów
+			</list>
+			<set></set>
+		</constructor-arg>
+
+		* wstrzykiwanie przez wałściwości / przestrzen nazw 'p'
+		<property name="compactDisc" ref="compactDisc"/>
+		<property name="compactDisc" value="compactDisc"/>
+	</beans>
+
+#3 Zaawansowane opcje wiazania
+
